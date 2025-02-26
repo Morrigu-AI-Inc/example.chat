@@ -1,8 +1,12 @@
 import { Breadcrumbs, OutlinedInput, Stack, Typography } from "@mui/material";
 import {CancelOutlined, SearchOutlined} from '@mui/icons-material';
+import { useRouter } from "next/router";
+import { useMemo } from "react";
 
 
 const Header = () => {
+    const router = useRouter();
+    const threadId = useMemo(() => router.query.threadId as string, [router.query.threadId]);
   return (
     <Stack
       direction="row"
@@ -26,8 +30,13 @@ const Header = () => {
                 Home
                 </Typography>
                 <Typography variant="body1" component="div">
-                Example
+                Thread
                 </Typography>
+                {threadId && (
+                    <Typography variant="body1" component="div">
+                    {threadId}
+                    </Typography>
+                )}
             </Breadcrumbs>
         </Stack>
         <Stack>

@@ -6,8 +6,11 @@ import {
   drawerClasses,
   Divider,
   Avatar,
+  Card,
 } from "@mui/material";
 import {
+    Assistant,
+  AutoAwesome,
   HomeOutlined,
   SchoolOutlined,
   WorkOutlined,
@@ -37,10 +40,10 @@ const BottomPart = () => {
 const Sidebar = () => {
   const options: { value: string; label: string; icon: React.ReactNode }[] = [
     {
-      value: "home",
-      label: "Home",
+      value: "assistant1",
+      label: "Assistant 1",
       icon: (
-        <HomeOutlined
+        <Assistant
           sx={{
             color: "text.secondary",
             fontSize: "1rem",
@@ -49,10 +52,10 @@ const Sidebar = () => {
       ),
     },
     {
-      value: "work",
-      label: "Work",
+      value: "assistant2",
+      label: "Assistant 2",
       icon: (
-        <WorkOutlined
+        <Assistant
           sx={{
             color: "text.secondary",
             fontSize: "1rem",
@@ -61,10 +64,10 @@ const Sidebar = () => {
       ),
     },
     {
-      value: "school",
-      label: "School",
+      value: "assistant3",
+      label: "Assistant 3",
       icon: (
-        <SchoolOutlined
+        <Assistant
           sx={{
             color: "text.secondary",
             fontSize: "1rem",
@@ -92,13 +95,34 @@ const Sidebar = () => {
         <Stack p={1}>
           <AssistantList
             options={options}
-            defaultValue="home"
+            defaultValue="assistant1"
             sx={{ width: "100%" }}
           />
         </Stack>
         <Divider />
-        <Stack flexGrow={1} justifyContent="center">
-          <Typography variant="body1">Sidebar content goes here.</Typography>
+        <Stack flexGrow={1} justifyContent="space-between">
+          <Stack>
+            {/* Placeholder for threads listing */}
+            threads should go here but OpenAI doesn't allow for listing threads.
+          </Stack>
+          <Stack p={1} spacing={2}>
+            <Card>
+              <Stack direction={"row"} spacing={1}>
+                <AutoAwesome
+                  sx={{ color: "text.secondary", fontSize: "1rem" }}
+                />
+                <Typography variant="body1" fontWeight={500}>
+                  Sidebar Title
+                </Typography>
+              </Stack>
+
+              <Stack direction={"row"} spacing={1}>
+                <Typography variant="body2" color={"text.secondary"}>
+                    This is some content inside the sidebar.
+                </Typography>
+                </Stack>
+            </Card>
+          </Stack>
         </Stack>
         {/* Bottom Part of The Sidebar */}
         <BottomPart />
